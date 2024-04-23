@@ -7,6 +7,7 @@ import (
 )
 
 func RegisterRoutes(r *gin.Engine) {
+	gin.SetMode(gin.ReleaseMode)
 	r.GET("/shortUrl/:shortUrl", service.ShortUrl)
 	r.POST("/shorten", service.Shorten)
 }
