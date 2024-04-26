@@ -8,10 +8,10 @@ pipeline {
                     checkout scm
 
                     def dockerImage = docker.build('shortenurl', '-f Dockerfile .')
-                    dockerImage.inside {
-                        sh 'go build -o my-app'
-                    }
-                    stash includes: 'my-app', name: 'build-artifacts'
+                    // dockerImage.inside {
+                    //     sh 'go build -o my-app'
+                    // }
+                    // stash includes: 'my-app', name: 'build-artifacts'
                 }
             }
         }
