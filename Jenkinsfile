@@ -15,21 +15,21 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                sh 'ls -l'
+        // stage('Test') {
+        //     steps {
+        //         sh 'ls -l'
 
-                unstash 'build-artifacts'
+        //         unstash 'build-artifacts'
                 
-                sh 'ls -l'
-            }
-        }
-        stage('Deployee') {
-            steps {
-                script {
-                    def dockerRun = docker.image('shortenurl').run('-p -d 8081:8081')
-                }
-            }
-        }
+        //         sh 'ls -l'
+        //     }
+        // }
+        // stage('Deployee') {
+        //     steps {
+        //         script {
+        //             def dockerRun = docker.image('shortenurl').run('-d -p 8081:8081')
+        //         }
+        //     }
+        // }
     }
 }
