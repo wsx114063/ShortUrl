@@ -9,9 +9,9 @@ pipeline {
 
                     def dockerImage = docker.build('shortenurl', '-f Dockerfile .')
                     dockerImage.inside {
-                        sh 'cd /startgo && go build -o my-app'
+                        sh 'pwd'
                     }
-                    stash includes: 'my-app', name: 'build-artifacts'
+                    // stash includes: 'my-app', name: 'build-artifacts'
                 }
             }
         }
