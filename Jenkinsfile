@@ -7,7 +7,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
-                    checkout([$class: 'GitSCM', branches: [[name: 'CICD']], 
+                    checkout([$class: 'GitSCM', branches: [[name: 'CICD/test']], 
                               doGenerateSubmoduleConfigurations: false, 
                               extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/wsx114063/ShortUrl.git']]])
                 }
