@@ -29,9 +29,9 @@ pipeline {
             agent { label 'test' }
             steps {
                 echo 'Testing..'
-                echo "download: ${jenkinsUrl}/job/${JOB_NAME}/${BUILD_NUMBER}/artifact/shorten_url.exe"
+                echo "download: ${BUILD_URL}/artifact/shorten_url.exe"
                 sh """#!/bin/bash
-                curl -O ${jenkinsUrl}/job/${JOB_NAME}/${BUILD_NUMBER}/artifact/shorten_url.exe
+                curl -O ${BUILD_URL}//artifact/shorten_url.exe
                 chmod +x shorten_url.exe
                 """
             }
