@@ -7,7 +7,7 @@ pipeline {
                 script {
                     checkout scm
 
-                    def dockerImage = docker.build('shortenUrl', '-f Dockerfile .')
+                    def dockerImage = docker.build('shortenurl', '-f Dockerfile .')
                     dockerImage.inside {
                         sh 'go build -o my-app'
                     }
