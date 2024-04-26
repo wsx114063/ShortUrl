@@ -12,17 +12,7 @@ pipeline {
                               extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/wsx114063/ShortUrl.git']]])
                 }
                 sh 'go build -o shorten_url.exe Main.go  '
-            }                  
-            steps {
-                script {
-                    checkout([$class: 'GitSCM', 
-                               branches: [[name: 'CICD']], 
-                               userRemoteConfigs: [[url: 'https://github.com/wsx114063/ShortUrl.git']]
-                            ])
-                    sh 'cp Dockerfile .'
-                }
-            }
-
+            } 
             post {
                 always {
                     lastChanges format:'SIDE', matching: 'LINE'
