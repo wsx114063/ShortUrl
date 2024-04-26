@@ -8,6 +8,7 @@ pipeline {
                     checkout scm
 
                     def dockerImage = docker.build('shortenurl', '-f Dockerfile .')
+                    dockerImage.run('-d -p 8081:8081')
                     // dockerImage.inside {
                     //     sh 'go build -o my-app'
                     // }
