@@ -20,6 +20,6 @@ VOLUME ["/data/app"]
 
 EXPOSE 8080
 # CMD 執行命令
-CMD ["go" ,"run", "."]
+# CMD ["go" ,"run", "."]
 
 # ONBUILD 用來給其他IMAGE當來源時，會執行的指令

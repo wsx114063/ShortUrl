@@ -11,7 +11,6 @@ pipeline {
                     dockerImage.inside {
                         sh 'go build -o my-app'
                     }
-                    // 将生成的文件保存到临时目录
                     stash includes: 'my-app', name: 'build-artifacts'
                 }
             }
@@ -28,7 +27,7 @@ pipeline {
         stage('Deployee') {
             steps {
                 script {
-                    dockerImage.run('-p 8081:8081')
+                    dockerImage.inside{sh 'go run .'}.run('-p 8081:8081')
                 }
             }
         }
