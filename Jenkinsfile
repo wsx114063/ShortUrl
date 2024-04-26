@@ -27,7 +27,9 @@ pipeline {
         }
         stage('Deployee') {
             steps {
-                dockerImage.run('-p 8081:8081')
+                script {
+                    dockerImage.run('-p 8081:8081')
+                }
             }
         }
     }
