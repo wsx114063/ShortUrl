@@ -27,7 +27,7 @@ pipeline {
         stage('Deployee') {
             steps {
                 script {
-                    dockerImage.inside{sh 'go run .'}.run('-p 8081:8081')
+                    def dockerRun = docker.image('shortenurl').run('-p 8081:8081')
                 }
             }
         }
