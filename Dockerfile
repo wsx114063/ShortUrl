@@ -18,7 +18,7 @@ VOLUME ["/data/app"]
 # USER 建立使用者
 #USER user1
 
-EXPOSE 8080
+EXPOSE 8081
 # CMD 執行命令
 CMD ["go" ,"run", "."]
 
