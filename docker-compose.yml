@@ -10,9 +10,9 @@ services:
     ports:
       - "8081:8081"
     environment:
-    - API_HOST=startgolang-ap-1
+    - API_HOST=pipeline_test_app_1
     - API_PORT=8081
-    - MONGODB_HOST=startgolang-db-1
+    - MONGODB_HOST=pipeline_test_db_1
     - MONGODB_PORT=27017
     depends_on:
       - db
