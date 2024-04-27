@@ -6,11 +6,11 @@ pipeline {
             steps {
                 script {
                     checkout scm
+                    sh 'pwd'
+                    sh 'ls -l'
+                    sh 'docker build shortenurl .'
 
-                    def dockerImage = docker.build('shortenurl', '-f Dockerfile .')
-                    dockerImage.inside {
-                        sh 'pwd'
-                    }
+                    // def dockerImage = docker.build('shortenurl', '-f Dockerfile .')
                     // stash includes: 'my-app', name: 'build-artifacts'
                 }
             }
