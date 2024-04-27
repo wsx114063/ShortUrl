@@ -6,16 +6,13 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    sh 'docker build -t shortenurl .'
-                    stash includes: '.', name: 'build-artifacts'                   
+                    sh 'docker build -t shortenurl .'                
                 }
             }
         }
         stage('Test') {
             steps {
-                sh 'pwd'
-                sh 'ls -l'
-                unstash 'build-artifacts'                
+                sh 'pwd'               
                 sh 'ls -l'
             }
         }
@@ -23,6 +20,11 @@ pipeline {
             steps {
                 sh 'docker run -d -p 8081:8081 --name shortenurl shortenurl'
             }
+        }
+    }
+    post {
+        always {
+            discordSend description: "Build:${currentBuild.number} Status: ${currentBuild.currentResult}", footer: "Footer Text", link: "${env.BUILD_URL}", result: "${currentBuild.currentResult}", title: "${JOB_NAME}", webhookURL: "https://discord.com/api/webhooks/1232882729343778826/O5asexU5APt5XlUeoevg-hc7lB9xAjuVYaHjdYE-awSnBmXr1jvj4DaWffOEJJvizwN5"
         }
     }
 }
