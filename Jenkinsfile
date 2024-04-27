@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    sh 'docker-compose build'
+                    sh 'docker build'
                     sh 'ls -l'
                 }
             }
