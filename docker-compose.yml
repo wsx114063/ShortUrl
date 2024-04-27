@@ -6,10 +6,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
     - API_HOST=startgolang-ap-1
-    - API_PORT=8080
+    - API_PORT=8081
     - MONGODB_HOST=startgolang-db-1
     - MONGODB_PORT=27017
     depends_on:
