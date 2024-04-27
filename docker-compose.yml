@@ -15,11 +15,11 @@ services:
     depends_on:
       - db
     volumes:
-      - var/jenkins_home/mongodb:/data/db  # 挂载本地目录用于持久化 MongoDB 数据
+      - mongodb:\data  # 挂载本地目录用于持久化 MongoDB 数据
     
   db:
     image: mongo
     ports:
       - "27019:27017"
     volumes:
-      - var/jenkins_home/mongodb:/data/db  # 挂载本地目录用于持久化 MongoDB 数据
+      - mongodb:\data  # 挂载本地目录用于持久化 MongoDB 数据
