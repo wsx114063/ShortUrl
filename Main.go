@@ -11,7 +11,7 @@ func main() {
 	r := gin.Default()
 	gin.SetMode(gin.ReleaseMode)
 	shortUrl.RegisterRoutes(r)
-	port := os.Getenv("PORT")
+	port := os.Getenv("API_PORT")
 
 	if port == "" {
 		port = "8080"
