@@ -6,7 +6,8 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    sh 'docker build -t shortenurl .'                
+                    sh 'go build .'
+                    sh 'ls -l'
                 }
             }
         }
@@ -18,7 +19,7 @@ pipeline {
         }
         stage('Deployee') {
             steps {
-                sh 'docker run -d -p 8081:8081 --name shortenurl shortenurl'
+                sh 'docker-compose up -d '
             }
         }
     }
