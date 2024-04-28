@@ -20,7 +20,9 @@ pipeline {
             steps {
                 script {
                     def testOutput = sh(script: 'go test ./...', returnStdout: true).trim()
-                    if (testOutput.contains('PASS')) {
+                    echo "${testOutput}"
+
+                    if (testOutput.contains('PASS') || testOutput.contains('ok')) {
                         echo 'Tests passed, proceeding with deployment'
                     } else {
                         error 'Tests failed, deployment aborted'
