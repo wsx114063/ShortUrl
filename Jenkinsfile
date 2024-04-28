@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    sh 'apt-get update && apt-get install -y golang'
+                    sh 'chmod +x build.sh'
                     sh './build.sh'
                 }
             }
