@@ -6,15 +6,21 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    sh 'docker build -t app .'
-                    sh 'ls -l'
+                    sh './build.sh'
                 }
             }
         }
         stage('Test') {
             steps {
-                sh 'pwd'               
-                sh 'ls -l'
+                // 在这里执行 Golang 单元测试
+                script {
+                    def testOutput = sh(script: 'go test ./...', returnStdout: true).trim()
+                    if (testOutput.contains('PASS')) {
+                        echo 'Tests passed, proceeding with deployment'
+                    } else {
+                        error 'Tests failed, deployment aborted'
+                    }
+                }
             }
         }
         stage('Deployee') {
