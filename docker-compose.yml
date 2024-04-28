@@ -16,6 +16,7 @@ services:
     - API_PORT= 8081
     - MONGODB_HOST= "${HOSTNAME}"_db
     - MONGODB_PORT= 27017
+    container_name: ${HOSTNAME}_app
     depends_on:
       - db
     
@@ -23,5 +24,6 @@ services:
     image: mongo
     ports:
       - "27019:27017"
+    container_name: ${HOSTNAME}_db
     volumes:
       - mongodb_data:/data
