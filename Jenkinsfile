@@ -6,13 +6,13 @@ pipeline {
             steps {
                 script {
                     checkout scm
+                    sh 'apt-get update && apt-get install -y golang'
                     sh './build.sh'
                 }
             }
         }
         stage('Test') {
             steps {
-                // 在这里执行 Golang 单元测试
                 script {
                     def testOutput = sh(script: 'go test ./...', returnStdout: true).trim()
                     if (testOutput.contains('PASS')) {
