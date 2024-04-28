@@ -1,29 +1,25 @@
 version: '3'
-volumes:
-    mongodb:
 
 services:
   app:
-    hostname: shortenurl
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
     environment:
-    - API_HOST= shortenurl
+    - API_HOST= shortenurl_app
     - API_PORT= 8081
     - MONGODB_HOST= shortenurl_db
     - MONGODB_PORT= 27017
     depends_on:
       - db
     volumes:
-      - mongodb:\data  # 挂载本地目录用于持久化 MongoDB 数据
+      - mongodb:/data  # 挂载本地目录用于持久化 MongoDB 数据
     
   db:
-    hostname: shortenurl_db
     image: mongo
     ports:
       - "27019:27017"
     volumes:
-      - mongodb:\data  # 挂载本地目录用于持久化 MongoDB 数据
+      - mongodb:/data  # 挂载本地目录用于持久化 MongoDB 数据
