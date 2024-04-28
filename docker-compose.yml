@@ -12,9 +12,9 @@ services:
     ports:
       - "8081:8081"
     environment:
-    - API_HOST= "${HOSTNAME}"_app
+    - API_HOST= ${HOSTNAME}_app
     - API_PORT= 8081
-    - MONGODB_HOST= "${HOSTNAME}"_db
+    - MONGODB_HOST= ${HOSTNAME}_db
     - MONGODB_PORT= 27017
     container_name: ${HOSTNAME}_app
     depends_on:
