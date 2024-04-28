@@ -1,25 +1,29 @@
 version: '3'
 
+volumes:
+  mongodb_data:
+    external: true
+
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
-    - API_HOST=startgolang-ap-1
-    - API_PORT=8080
-    - MONGODB_HOST=startgolang-db-1
+    - API_HOST=${HOSTNAME}_app
+    - API_PORT=8081
+    - MONGODB_HOST=${HOSTNAME}_db
     - MONGODB_PORT=27017
+    container_name: ${HOSTNAME}_app
     depends_on:
       - db
-    volumes:
-      - .\data:\data  # 挂载本地目录用于持久化 MongoDB 数据
     
   db:
     image: mongo
     ports:
       - "27019:27017"
+    container_name: ${HOSTNAME}_db
     volumes:
-      - .\data\db:\data\db  # 挂载本地目录用于持久化 MongoDB 数据
+      - mongodb_data:/data/db
