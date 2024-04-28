@@ -6,10 +6,10 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    withEnv(["GOROOT=/usr/local/go", "PATH=/usr/local/go/bin:${env.PATH}"])
-                    sh 'chmod +x build.sh'
-                    sh './build.sh'
-                    
+                    withEnv(["GOROOT=/usr/local/go", "PATH=/usr/local/go/bin:${env.PATH}"]){
+                        sh 'chmod +x build.sh'
+                        sh './build.sh'
+                    }                    
                 }
             }
         }
