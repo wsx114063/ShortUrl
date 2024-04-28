@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Deployee') {
             steps {
-                sh 'docker-compose up -d -p shortenurl --build'
+                sh 'docker-compose up -p shortenurl -d --build'
             }
         }
     }
