@@ -26,4 +26,4 @@ services:
       - "27019:27017"
     container_name: ${HOSTNAME}_db
     volumes:
-      - mongodb_data:/data
+      - mongodb_data:/data/db
