@@ -1,1 +1,2 @@
-sudo go build -o gobuild
+apt-get update && apt-get install -y golang
+go build -o gobuild
