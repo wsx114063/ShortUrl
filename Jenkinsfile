@@ -1,15 +1,18 @@
 pipeline {
     agent any
 
+    environment {
+        GOROOT = '/usr/local/go'
+        PATH = "/usr/local/go/bin:${env.PATH}"
+    }
+
     stages {
         stage('Build Golang Environment') {
             steps {
                 script {
                     checkout scm
-                    withEnv(["GOROOT=/usr/local/go", "PATH=/usr/local/go/bin:${env.PATH}"]){
-                        sh 'chmod +x build.sh'
-                        sh './build.sh'
-                    }                    
+                    sh 'chmod +x build.sh'
+                    sh './build.sh'
                 }
             }
         }
