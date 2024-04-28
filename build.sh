@@ -11,3 +11,5 @@ sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 go version
 
 go build -o gobuild
+
+docker volume create --name=mongodb_data
