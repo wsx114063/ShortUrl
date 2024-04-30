@@ -19,7 +19,7 @@ services:
     container_name: ${HOSTNAME}_app
     depends_on:
       - db
-    mynetwork:
+    networks:
       - mynetwork
     
   db:
@@ -29,7 +29,7 @@ services:
     container_name: ${HOSTNAME}_db
     volumes:
       - mongodb_data:/data/db
-    mynetwork:
+    networks:
       - mynetwork
 
 networks:
