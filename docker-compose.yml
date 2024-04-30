@@ -19,6 +19,8 @@ services:
     container_name: ${HOSTNAME}_app
     depends_on:
       - db
+    mynetwork:
+      - mynetwork
     
   db:
     image: mongo
@@ -27,8 +29,10 @@ services:
     container_name: ${HOSTNAME}_db
     volumes:
       - mongodb_data:/data/db
+    mynetwork:
+      - mynetwork
 
 networks:
-  network1:
+  mynetwork:
     name: mynetwork
     external: true      
