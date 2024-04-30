@@ -27,3 +27,8 @@ services:
     container_name: ${HOSTNAME}_db
     volumes:
       - mongodb_data:/data/db
+
+networks:
+  network1:
+    name: mynetwork
+    external: true      
